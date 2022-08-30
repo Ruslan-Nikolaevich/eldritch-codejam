@@ -156,6 +156,80 @@ function filtrHighLevel() { // фильтр для уровня Высокий �
 
 }
 
+function filtrVeryHighLevel() { // фильтр для уровня Очень Высокий берем все нард и если недостает то normal
+    cardsDataGreen.forEach(element => {
+        if(element.difficulty == 'hard') {
+            cardsDataGreenFilter.push(element);
+        }
+       
+    });
+    cardsDataBlue.forEach(element => {
+        if(element.difficulty == 'hard') {
+            cardsDataBlueFilter.push(element);
+        }
+       
+    });
+    cardsDataBrown.forEach(element => {
+        if(element.difficulty == 'hard') {
+            cardsDataBrownFilter.push(element);
+        }
+       
+    });
+
+    if (cardsDataGreenFilter.length < 6) {
+           cardsDataGreen.forEach(element => {
+                if(element.difficulty == 'normal' && cardsDataGreenFilter.length < 6) {
+                    cardsDataGreenFilter.push(element);
+                }
+            });
+    }
+    if (cardsDataBrownFilter.length < 9) {
+        cardsDataBrown.forEach(element => {
+             if(element.difficulty == 'normal' && cardsDataBrownFilter.length < 9) {
+                 cardsDataBrownFilter.push(element);
+             }
+         });
+ }
+
+}
+
+function filtrVeryLovLevel() { // фильтр для уровня Очень Ybprbq берем все easy и если недостает то normal
+    cardsDataGreen.forEach(element => {
+        if(element.difficulty == 'easy') {
+            cardsDataGreenFilter.push(element);
+        }
+       
+    });
+    cardsDataBlue.forEach(element => {
+        if(element.difficulty == 'easy') {
+            cardsDataBlueFilter.push(element);
+        }
+       
+    });
+    cardsDataBrown.forEach(element => {
+        if(element.difficulty == 'easy') {
+            cardsDataBrownFilter.push(element);
+        }
+       
+    });
+
+    if (cardsDataGreenFilter.length < 6) {
+           cardsDataGreen.forEach(element => {
+                if(element.difficulty == 'normal' && cardsDataGreenFilter.length < 6) {
+                    cardsDataGreenFilter.push(element);
+                }
+            });
+    }
+    if (cardsDataBrownFilter.length < 9) {
+        cardsDataBrown.forEach(element => {
+             if(element.difficulty == 'normal' && cardsDataBrownFilter.length < 9) {
+                 cardsDataBrownFilter.push(element);
+             }
+         });
+ }
+
+}
+
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -176,6 +250,29 @@ function getShuffleAndRezultCardsDataFilter() {
 
 function choicelevel(level = 'Средний') {
     switch (level) {
+
+        case 'Очень низкий':
+            console.log('Очень низкий');
+            rezetCardsDataMassiv();
+            filtrVeryLovLevel();
+            getShuffleAndRezultCardsDataFilter();
+
+            console.log(cardsDataGreenFilter);
+            console.log(cardsDataBlueFilter);
+            console.log(cardsDataBrownFilter);  
+            break;
+
+        case 'Низкий':
+            console.log('Низкий');
+            rezetCardsDataMassiv();
+            filtrLovLevel();
+            getShuffleAndRezultCardsDataFilter();
+
+            console.log(cardsDataGreenFilter);
+            console.log(cardsDataBlueFilter);
+            console.log(cardsDataBrownFilter);  filtrVeryLovLevel()
+            break;
+
         case 'Средний':
             console.log('Средний');
             rezetCardsDataMassiv();
@@ -185,18 +282,8 @@ function choicelevel(level = 'Средний') {
             console.log(rezultCardsDataGreenFilter);
             console.log(rezultCardsDataBlueFilter);
             console.log(rezultCardsDataBrowFilter);
-
             break;
-        case 'Низкий':
-            console.log('Низкий');
-            rezetCardsDataMassiv();
-            filtrLovLevel();
-            getShuffleAndRezultCardsDataFilter();
-
-            console.log(cardsDataGreenFilter);
-            console.log(cardsDataBlueFilter);
-            console.log(cardsDataBrownFilter);  filtrHighLevel();
-            break;
+        
         case 'Высокий':
             console.log('Высокий');
             rezetCardsDataMassiv();
@@ -207,6 +294,17 @@ function choicelevel(level = 'Средний') {
             console.log(cardsDataBlueFilter);
             console.log(cardsDataBrownFilter);  
             break;
+
+            case 'Очень Высокий':
+                console.log('Очень Высокий');
+                rezetCardsDataMassiv();
+                filtrVeryHighLevel();
+                getShuffleAndRezultCardsDataFilter();
+    
+                console.log(cardsDataGreenFilter);
+                console.log(cardsDataBlueFilter);
+                console.log(cardsDataBrownFilter);  
+                break;
         default:
             break;
     }
