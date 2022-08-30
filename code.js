@@ -193,7 +193,7 @@ function filtrVeryHighLevel() { // фильтр для уровня Очень �
 
 }
 
-function filtrVeryLovLevel() { // фильтр для уровня Очень Ybprbq берем все easy и если недостает то normal
+function filtrVeryLovLevel() { // фильтр для уровня Очень Низкий берем все easy и если недостает то normal
     cardsDataGreen.forEach(element => {
         if(element.difficulty == 'easy') {
             cardsDataGreenFilter.push(element);

@@ -15,7 +15,7 @@ const cardsDataBlue = [
   },
   {
     id: 'blue3',
-    cardFace: '/eldritch-codejam/assets/MythicCards/blue/blue1.png',
+    cardFace: '/eldritch-codejam/assets/MythicCards/blue/blue3.png',
     difficulty: 'easy',
     color:'blue'
   },
