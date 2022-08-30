@@ -173,7 +173,7 @@ p{
 .shirt,.gameCard{
     width: 45%;
     height: 43vh;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     margin-bottom: 20px;
 }
 .shirt{
