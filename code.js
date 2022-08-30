@@ -112,6 +112,51 @@ function filtrNormal() { // фильтр для уровня Средний
     });
 
 }
+
+function filtrLovLevel() { // фильтр для уровня Низкий убираем все hard
+    cardsDataGreen.forEach(element => {
+        if(element.difficulty != 'hard') {
+            cardsDataGreenFilter.push(element);
+        }
+       
+    });
+    cardsDataBlue.forEach(element => {
+        if(element.difficulty != 'hard') {
+            cardsDataBlueFilter.push(element);
+        }
+       
+    });
+    cardsDataBrown.forEach(element => {
+        if(element.difficulty != 'hard') {
+            cardsDataBrownFilter.push(element);
+        }
+       
+    });
+
+}
+function filtrHighLevel() { // фильтр для уровня Высокий убираем easy
+    cardsDataGreen.forEach(element => {
+        if(element.difficulty != 'easy') {
+            cardsDataGreenFilter.push(element);
+        }
+       
+    });
+    cardsDataBlue.forEach(element => {
+        if(element.difficulty != 'easy') {
+            cardsDataBlueFilter.push(element);
+        }
+       
+    });
+    cardsDataBrown.forEach(element => {
+        if(element.difficulty != 'easy') {
+            cardsDataBrownFilter.push(element);
+        }
+       
+    });
+
+}
+
+
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
   }
@@ -119,35 +164,49 @@ function getRandom() {
 return Math.floor(Math.random() * (3)); //Максимум не включается, минимум включается
 }  
 
+function getShuffleAndRezultCardsDataFilter() {
+    shuffle(cardsDataGreenFilter);
+    shuffle(cardsDataBlueFilter);
+    shuffle(cardsDataBrownFilter);
+    rezultCardsDataGreenFilter = cardsDataGreenFilter.slice(0,fullLenghtMassivGreenCard);
+    rezultCardsDataBlueFilter = cardsDataBlueFilter.slice(0,fullLenghtMassivBlueCard);
+    rezultCardsDataBrowFilter = cardsDataBrownFilter.slice(0,fullLenghtMassivBrowCard);
+    
+}
+
 function choicelevel(level = 'Средний') {
     switch (level) {
         case 'Средний':
             console.log('Средний');
             rezetCardsDataMassiv();
             filtrNormal();
-             
-            shuffle(cardsDataGreenFilter);
-            shuffle(cardsDataBlueFilter);
-            shuffle(cardsDataBrownFilter);
-            rezultCardsDataGreenFilter = cardsDataGreenFilter.slice(0,fullLenghtMassivGreenCard);
-            rezultCardsDataBlueFilter = cardsDataBlueFilter.slice(0,fullLenghtMassivBlueCard);
-            rezultCardsDataBrowFilter = cardsDataBrownFilter.slice(0,fullLenghtMassivBrowCard);
+            getShuffleAndRezultCardsDataFilter(); 
+           
             console.log(rezultCardsDataGreenFilter);
             console.log(rezultCardsDataBlueFilter);
             console.log(rezultCardsDataBrowFilter);
 
             break;
-        case 'Очень низкий':
-            console.log('Очень низкий');
+        case 'Низкий':
+            console.log('Низкий');
             rezetCardsDataMassiv();
-           
-            console.log(cardsDataGreenFilter);
-            
-            console.log(cardsDataBlueFilter);
+            filtrLovLevel();
+            getShuffleAndRezultCardsDataFilter();
 
-            console.log(cardsDataBrownFilter);
+            console.log(cardsDataGreenFilter);
+            console.log(cardsDataBlueFilter);
+            console.log(cardsDataBrownFilter);  filtrHighLevel();
             break;
-    
+        case 'Высокий':
+            console.log('Высокий');
+            rezetCardsDataMassiv();
+            filtrHighLevel();
+            getShuffleAndRezultCardsDataFilter();
+
+            console.log(cardsDataGreenFilter);
+            console.log(cardsDataBlueFilter);
+            console.log(cardsDataBrownFilter);  
+            break;
         default:
             break;
     }
@@ -488,7 +547,7 @@ buttonStart.addEventListener('click', () => { // запуск игры
  buttonStart.classList.add('hiden');
  console.log(fullLenghtMassivGreenCard,fullLenghtMassivBlueCard,fullLenghtMassivBrowCard);
  //console.log(dataFirstStepGreen,dataFirstStepBlue,dataFirstStepBrow );
-
+ gameCard.style.background = `none`;
 });
 
 buttonStop.addEventListener('click', () => { // сброс
